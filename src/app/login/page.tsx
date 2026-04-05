@@ -51,7 +51,7 @@ export default function LoginPage() {
               fontWeight: "bold",
             }}
           >
-            Insurance CRM
+            SimplyCRM
           </div>
           <div style={{ fontSize: "13px", color: "var(--text-secondary)" }}>
             Agency Management System

@@ -51,9 +51,9 @@ export default function AppHeader() {
       <div className="flex items-center gap-3">
         <div
           className="flex items-center justify-center rounded"
-          style={{ width: "36px", height: "36px", background: "#ffffff", padding: "2px" }}
+          style={{ width: "32px", height: "32px", background: "#ffffff", padding: "4px", borderRadius: "6px" }}
         >
-          <span style={{ fontSize: "10px", fontWeight: "bold", color: "#1a5276" }}>CRM</span>
+          <span style={{ fontSize: "14px", fontWeight: "900", color: "#1a5276", lineHeight: 1 }}>S</span>
         </div>
         <h1 className="text-lg font-bold m-0" style={{ fontSize: "18px" }}>
           {user?.agencyName || "Insurance CRM"}

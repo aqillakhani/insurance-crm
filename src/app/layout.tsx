@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Insurance CRM",
-  description: "Insurance Agency Management System",
+  title: "SimplyCRM — Insurance Agency Management",
+  description: "The modern CRM built for multi-location insurance agencies. Manage customers, policies, payments, renewals, and team performance in one platform.",
 };
 
 export default function RootLayout({

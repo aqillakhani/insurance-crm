@@ -26,11 +26,8 @@ const NAV_ITEMS: NavItem[] = [
     hasDropdown: true,
     dropdownItems: [
       { label: "Office Overview", href: "/admin/offices" },
-      { label: "Switch Office", href: "/admin/offices/switch" },
     ],
   },
-  { label: "Forms", href: "/forms" },
-  { label: "Remake", href: "/remake" },
   { label: "E.O.D.", href: "/reports/eod" },
   {
     label: "Reports",
@@ -40,14 +37,12 @@ const NAV_ITEMS: NavItem[] = [
       { label: "Reports Menu", href: "/reports" },
       { label: "End Of Day", href: "/reports/eod" },
       { label: "Producer Leaderboard", href: "/reports/leaderboard" },
-      { label: "Employee Overview", href: "/reports/employee-overview" },
-      { label: "Production Summary", href: "/reports/production-summary" },
     ],
   },
   { label: "Dashboard", href: "/dashboard" },
   {
     label: "Comms",
-    href: "/communications",
+    href: "/communications/sms",
     hasDropdown: true,
     dropdownItems: [
       { label: "SMS Campaigns", href: "/communications/sms" },
@@ -64,13 +59,10 @@ const NAV_ITEMS: NavItem[] = [
     dropdownItems: [
       { label: "User Management", href: "/admin/users" },
       { label: "Offices", href: "/admin/offices" },
-      { label: "Roles", href: "/admin/roles" },
-      { label: "Automations", href: "/admin/automations" },
-      { label: "Settings", href: "/admin/settings" },
+      { label: "Carriers", href: "/admin/carriers" },
     ],
   },
-  { label: "Training", href: "/training" },
-  { label: "File Locker", href: "/file-locker" },
+  { label: "Training", href: "/training-guide" },
 ];
 
 export default function TopNavBar() {

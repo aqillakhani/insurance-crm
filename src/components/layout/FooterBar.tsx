@@ -1,12 +1,10 @@
 /**
- * FooterBar — Bottom bar matching Agency Matrix
- * Shows support links, version info
- * Reference: Bottom of screenshots 2, 5, 6
+ * FooterBar — Professional footer with real branding
  */
 export default function FooterBar() {
   return (
     <footer
-      className="flex items-center justify-center gap-4 px-4 py-1"
+      className="flex items-center justify-center gap-4 px-4 py-1.5"
       style={{
         background: "#f0f0f0",
         borderTop: "1px solid var(--border)",
@@ -14,17 +12,15 @@ export default function FooterBar() {
         color: "var(--text-muted)",
       }}
     >
-      <span>Contact Support</span>
+      <span>© {new Date().getFullYear()} SimplyCRM</span>
       <span>|</span>
-      <span>Chat With Us</span>
+      <a href="mailto:support@simplycrms.com" style={{ color: "var(--link)" }}>support@simplycrms.com</a>
       <span>|</span>
-      <span>Email: support@agency.com</span>
+      <span>Terms of Service</span>
       <span>|</span>
-      <span>End User License Agreement</span>
+      <span>Privacy Policy</span>
       <span>|</span>
-      <span>Open Source Credits</span>
-      <span>|</span>
-      <span>Version 1.0</span>
+      <span>v1.0.0</span>
     </footer>
   );
 }
