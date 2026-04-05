@@ -1,0 +1,234 @@
+@import "tailwindcss";
+
+/* ==========================================
+   AGENCY MATRIX STYLE — Dense Enterprise UI
+   Colors extracted from screenshots
+   ========================================== */
+
+:root {
+  /* Header / Branding */
+  --header-bg: #1a5276;
+  --header-bg-light: #2e86c1;
+  --header-text: #ffffff;
+
+  /* Navigation bar */
+  --nav-bg: #2980b9;
+  --nav-hover: #1a6da0;
+  --nav-active: #1a5276;
+  --nav-text: #ffffff;
+  --nav-border: #2471a3;
+
+  /* Green sections / headers */
+  --section-header-bg: #6cb33f;
+  --section-header-text: #ffffff;
+  --section-header-bg-dark: #5a9e2f;
+
+  /* Tab bar */
+  --tab-bg: #e8e8e8;
+  --tab-active-bg: #2980b9;
+  --tab-active-text: #ffffff;
+  --tab-text: #333333;
+  --tab-border: #cccccc;
+  --tab-hover: #d0d0d0;
+
+  /* Action bar buttons */
+  --action-btn-bg: #2980b9;
+  --action-btn-text: #ffffff;
+  --action-btn-hover: #1a6da0;
+
+  /* Tables */
+  --table-header-bg: #e8e8e8;
+  --table-header-text: #333333;
+  --table-row-even: #ffffff;
+  --table-row-odd: #e8f5e9;
+  --table-border: #d0d0d0;
+  --table-hover: #d4edda;
+
+  /* General */
+  --bg: #ffffff;
+  --bg-page: #f5f5f5;
+  --text: #333333;
+  --text-secondary: #666666;
+  --text-muted: #999999;
+  --link: #2980b9;
+  --link-hover: #1a5276;
+  --border: #cccccc;
+  --border-light: #e0e0e0;
+
+  /* Status colors */
+  --status-active: #27ae60;
+  --status-cancelled: #e74c3c;
+  --status-pending: #f39c12;
+  --status-expired: #95a5a6;
+
+  /* Green "Add Customer" button */
+  --btn-green-bg: #6cb33f;
+  --btn-green-hover: #5a9e2f;
+  --btn-green-text: #ffffff;
+
+  /* Form fields */
+  --input-bg: #ffffff;
+  --input-border: #cccccc;
+  --input-focus-border: #2980b9;
+  --label-text: #333333;
+}
+
+body {
+  background: var(--bg-page);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0;
+  padding: 0;
+}
+
+/* No dark mode — Agency Matrix is light-only */
+
+/* Dense text sizing to match Agency Matrix */
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+/* Scrollbar styling for dense tables */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+/* Utility classes matching Agency Matrix density */
+.am-label {
+  font-weight: bold;
+  color: var(--label-text);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.am-value {
+  color: var(--text);
+  font-size: 13px;
+}
+
+.am-section-green {
+  background: var(--section-header-bg);
+  color: var(--section-header-text);
+  padding: 4px 10px;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.am-section-green:hover {
+  background: var(--section-header-bg-dark);
+}
+
+/* ==========================================
+   PERFORMANCE & SMOOTHNESS
+   ========================================== */
+
+/* Smooth transitions for all interactive elements */
+a, button, select, input, tr, td {
+  transition: background-color 0.15s ease, color 0.1s ease, border-color 0.15s ease, opacity 0.15s ease;
+}
+
+/* Smooth page transitions */
+main {
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(2px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Skeleton loading animation */
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+.animate-pulse > div {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* Table row hover — smooth */
+tr {
+  transition: background-color 0.1s ease;
+}
+
+/* Button press feedback */
+button:active:not(:disabled) {
+  transform: scale(0.98);
+  transition: transform 0.05s ease;
+}
+
+/* Focus styles for accessibility */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--input-focus-border) !important;
+  box-shadow: 0 0 0 2px rgba(41, 128, 185, 0.2);
+}
+
+/* Dropdown animation */
+[class*="absolute"] {
+  animation: dropIn 0.15s ease-out;
+}
+
+@keyframes dropIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Toast notification style */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 16px;
+  background: var(--header-bg);
+  color: white;
+  font-size: 12px;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 9999;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Optimize text rendering */
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevent layout shift on scrollbar */
+html {
+  scrollbar-gutter: stable;
+}
