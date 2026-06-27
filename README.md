@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# insurance-crm
 
-## Getting Started
+Multi-tenant CRM for insurance agencies to manage customers, policies, quotes, claims, and team workflows.
 
-First, run the development server:
+**Live demo:** [CONFIRM] · **Walkthrough:** [CONFIRM]
+
+## Problem
+
+Insurance agencies spanning multiple offices struggle with fragmented systems—customer data scattered across spreadsheets, policy portfolios out of sync, claim status unknown, and renewals missed. Teams need one system connecting customers to their full relationship history.
+
+## What it does
+
+- **Customer management:** Profiles with contact, ID, household, and relationship tracking; links to all policies, claims, and payment history
+- **Policy lifecycle:** Status, premium, effective/expiration dates, carrier assignment, agent/writer tracking, documents, and change requests
+- **Quote-to-bind workflow:** Create quotes against multiple carriers, compare premiums, track bind status, convert to policy
+- **Claims processing:** Date of loss, claim number, adjuster contact, status updates per policy and carrier
+- **Payment reconciliation:** Record premiums, commissions, and fees by carrier, office, and customer with audit trail
+- **Task & communication hub:** Priorities, due dates, team assignment; email/SMS/announcement channels with full history
+- **Executive dashboard:** Active policies, customer count, open tasks, renewals due within 30 days, producer leaderboard per office
+- **Role-based access:** Admin, Manager, Producer, CSR roles with permission-based feature gates
+- **Organizational hierarchy:** Territory → Division → Region → District → Office structure for multi-location agencies
+
+## Stack
+
+- **Frontend:** Next.js 16, React 19, TypeScript, Tailwind CSS 4, Lucide icons
+- **Backend:** Next.js API routes, Server Components for data fetching
+- **Database:** Prisma 5 ORM, PostgreSQL
+- **Auth:** NextAuth 5 (Credentials provider with bcrypt)
+- **Validation:** Zod
+- **Utilities:** date-fns, bcryptjs
+
+## Architecture
+
+**Full-stack Next.js app** (App Router): Server Components fetch data via Prisma, API routes handle mutations, middleware enforces auth/RBAC.
+
+**Multi-tenant design:** Single Agency root; nested org hierarchy (Territory → Division → Region → District → Office) for scale. Queries scoped to agency and role permissions. All entities track agencyId for isolation.
+
+**Auth flow:** Login with email/password → Credentials provider validates against Users table, compares bcrypt hash → JWT session includes user id, role, agency, office → NextAuth middleware applies auth/RBAC to all routes.
+
+**Data model:** Customers link to Policies, Quotes, Claims, Payments, Tasks, Communications. Policies reference Carriers, Agents (Users), coverage data. Activity logs track all mutations.
+
+## Run it
 
 ```bash
+# Install dependencies
+npm install
+
+# Set up environment
+export DATABASE_URL="postgresql://user:password@localhost/insurance_crm"
+
+# Push schema and seed sample data
+npm run db:push
+npm run db:seed
+
+# Start dev server on http://localhost:3000
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Login with: admin@cityauto.com / password123
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Note:** Database migration and seed include a sample agency (City Auto Insurance) with test users across 5 regional offices, carriers, and sample customers/policies.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**PII Handling:** Customer records include SSN field (ssnEncrypted). [CONFIRM] encryption strategy and key management.  
+**Status:** [CONFIRM] whether this is open-source or commercial.  
+**Demo:** [CONFIRM] live or staging URL if available.
